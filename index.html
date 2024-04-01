@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+        }
+        .container {
+            text-align: center;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        input[type="email"],
+        textarea {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            box-sizing: border-box;
+        }
+        input[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>FlexFlow Account Deletion Form</h2>
+        <form action="mailto:sabeeh26900@gmail.com" method="post" enctype="text/plain">
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+            <label for="message">Message:</label>
+            <textarea id="message" name="message" rows="4" required></textarea>
+            <input type="submit" value="Submit">
+        </form>
+
+        <?php
+        if(isset($_POST['submit'])) {
+            $to_email = "sabeeh26900@gmail.com";
+            $subject = "Test Email";
+            $message = $_POST['message'];
+            $from_email = $_POST['email'];
+    
+            if (mail($to_email, $subject, $message, "From: $from_email")) {
+                echo "Email sent successfully!";
+            } else {
+                echo "Email sending failed.";
+            }
+        }
+        ?>
+    </div>
+</body>
+</html>
